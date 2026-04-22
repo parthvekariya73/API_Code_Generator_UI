@@ -210,7 +210,7 @@ function App() {
     setLoading(true)
     setError(null)
     try {
-      const response = await fetch('http://localhost:8081/api/v2/generator/parse-sql', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v2/generator/parse-sql`, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         body: sql
@@ -260,7 +260,7 @@ function App() {
         throw new Error('Invalid JSON configuration. Please fix the JSON payload before generating.')
       }
 
-      const response = await fetch('http://localhost:8081/api/v2/generator/generate/zip', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v2/generator/generate/zip`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(parsedConfig)
