@@ -210,7 +210,7 @@ function App() {
     setLoading(true)
     setError(null)
     try {
-      const response = await fetch('http://localhost:8080/api/v2/generator/parse-sql', {
+      const response = await fetch('http://localhost:8081/api/v2/generator/parse-sql', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         body: sql
@@ -260,7 +260,7 @@ function App() {
         throw new Error('Invalid JSON configuration. Please fix the JSON payload before generating.')
       }
 
-      const response = await fetch('http://localhost:8080/api/v2/generator/generate/zip', {
+      const response = await fetch('http://localhost:8081/api/v2/generator/generate/zip', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(parsedConfig)
@@ -293,7 +293,7 @@ function App() {
           <h1 className="text-3xl font-bold tracking-tight text-slate-800">
             Dynamic API Generator
           </h1>
-          <p className="text-slate-500 mt-1">Convert SQL schemas directly into production-ready Spring Boot microservices.</p>
+          <p className="text-slate-500 mt-1">Convert SQL schemas directly into production-ready Spring Boot.</p>
         </header>
 
         {error && (
